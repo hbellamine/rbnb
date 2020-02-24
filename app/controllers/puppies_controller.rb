@@ -24,10 +24,12 @@ class PuppiesController < ApplicationController
   def create
     @puppie = Puppy.new(params_puppy)
     @puppie.save
-    redirect_to puppies_index_path
+    raise
+    redirect_to puppies_path
   end
 
   def show
+  @puppie = Puppy.find(params[:id])
   end
 
   def update
@@ -37,9 +39,8 @@ class PuppiesController < ApplicationController
   end
 
   private
-
   def params_puppy
-  params.require(:puppy).permit(:name, :photo, :age, :availability, :breed)
+    params.require(:puppy).permit(:name, :photo, :age, :price, :availability, :breed, :user_id)
   end
 
 end
