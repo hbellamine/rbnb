@@ -13,4 +13,5 @@ class Puppy < ApplicationRecord
 #     @puppies = Puppy.all
 #   end
 # end
+  has_one_attached :photo
 end
