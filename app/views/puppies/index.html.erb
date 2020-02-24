@@ -1,3 +1,4 @@
+
 <div
   id="map"
   style="width: 100%;
@@ -5,3 +6,13 @@
   data-markers='<%= @puppies_loc.to_json %>'
   data-mapbox-api-key="<%= ENV['pk.eyJ1Ijoicnp1YmVua28iLCJhIjoiY2s2a25penU1MDVuaDNzcnJkMjZrZ3NoYiJ9.FViL4WDPlVmmbPqN9Y2V4Q'] %>"
 ></div>
+
+<%= form_tag(search_page_path, :method => "get",
+    class: 'navbar-form navbar-left') do %>
+  <div class="input-group">
+    <%= search_field_tag :search, params[:search], placeholder: "Search for a puppy", class: "form-control" %>
+    <div class="input-group-btn">
+      <%= button_tag "Search", :class => 'btn btn-primary glyphicon glyphicon-search',:name => nil%>
+    </div>
+  </div>
+<% end %>
