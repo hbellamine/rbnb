@@ -2,10 +2,10 @@ class PuppiesController < ApplicationController
   def index
     @puppies = Puppy.geocoded #returns puppiess with coordinates
 
-    @markers = @puppies.map do |flat|
+    @markers = @puppies.map do |puppy|
       {
-        lat: flat.latitude,
-        lng: flat.longitude
+        lat: puppy.latitude,
+        lng: puppy.longitude
       }
   end
 
