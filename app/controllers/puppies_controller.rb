@@ -1,6 +1,20 @@
 class PuppiesController < ApplicationController
   def index
-    @puppies = Puppy.all
+
+    @puppies_loc = Puppy.geocoded #returns puppiess with coordinates
+
+    @markers = @puppies_loc.map do |puppy|
+      {
+        lat: puppy.latitude,
+        lng: puppy.longitude
+      }
+    end
+    if params[:search].present?
+      sql_search = "name ILIKE :search OR breed ILIKE :search"
+      @puppies = Puppy.where(sql_search, search: "%#{params[:search]}%")
+    else
+      @puppies = Puppy.all
+    end
   end
 
   def new
@@ -25,10 +39,8 @@ class PuppiesController < ApplicationController
   end
 
   private
-
   def params_puppy
-  params.require(:puppy).permit(:name, :photo, :age, :price, :availability, :breed, :user_id)
-
+    params.require(:puppy).permit(:name, :photo, :age, :price, :availability, :breed, :user_id)
   end
 
 end

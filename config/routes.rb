@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+#<<<<<<< indexlist
   root to: 'pages#home'
 
   resources :bookings
@@ -13,8 +14,13 @@ Rails.application.routes.draw do
   resources :puppies, except:[:new, :create]
 
 
-  get 'users/puppies'
-
-  get 'users/bookings'
+#=======
+#  resources :puppies do
+ #   resources :bookings, only: [:new, :create]
+ # end
+ # root to: 'pages#home'
+#>>>>>>> master
+ # get 'users/puppies'
+ # get 'users/bookings'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-end
+#end
