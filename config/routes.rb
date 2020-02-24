@@ -11,9 +11,10 @@ Rails.application.routes.draw do
   get 'users/show'
   get 'users/update'
   get 'users/destroy'
-  get 'puppies/index'
   get 'puppies/new'
   get 'puppies/create'
+  get 'puppies/index'
+
   get 'puppies/show'
   get 'puppies/update'
   get 'puppies/destroy'
