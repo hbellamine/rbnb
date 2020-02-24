@@ -1,2 +1,7 @@
-<h1>Puppies#index</h1>
-<p>Find me in app/views/puppies/index.html.erb</p>
+<div
+  id="map"
+  style="width: 100%;
+  height: 600px;"
+  data-markers='<%= @puppies.to_json %>'
+  data-mapbox-api-key="<%= ENV['pk.eyJ1Ijoicnp1YmVua28iLCJhIjoiY2s2a25penU1MDVuaDNzcnJkMjZrZ3NoYiJ9.FViL4WDPlVmmbPqN9Y2V4Q'] %>"
+></div>
