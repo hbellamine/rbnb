@@ -8,6 +8,7 @@ class PuppiesController < ApplicationController
         lat: puppy.latitude,
         lng: puppy.longitude
       }
+    end
     if params[:search].present?
       sql_search = "name ILIKE :search OR breed ILIKE :search"
       @puppies = Puppy.where(sql_search, search: "%#{params[:search]}%")
@@ -39,7 +40,6 @@ class PuppiesController < ApplicationController
 
   def params_puppy
   params.require(:puppy).permit(:name, :photo, :age, :availability, :breed)
-
   end
 
 end
