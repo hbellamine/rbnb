@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 ruby '2.6.5'
 
 gem 'bootsnap', require: false
+
+gem 'dotenv-rails', groups: [:development, :test]
 gem 'jbuilder', '~> 2.0'
 gem 'pg', '~> 0.21'
 gem 'puma'
