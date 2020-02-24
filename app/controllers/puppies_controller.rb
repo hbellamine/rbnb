@@ -40,7 +40,7 @@ class PuppiesController < ApplicationController
 
   private
   def params_puppy
-    params.require(:puppy).permit(:name, :photo, :age, :price, :availability, :breed, :user_id)
+    params.require(:puppy).permit(:name, :photo, :age, :price, :availability, :breed, :current_user.id, :location)
   end
 
 end

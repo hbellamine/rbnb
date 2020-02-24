@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   resources :puppies, except:[:new, :create]
 
-
+end
 #=======
 #  resources :puppies do
  #   resources :bookings, only: [:new, :create]
