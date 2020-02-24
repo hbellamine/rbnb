@@ -9,12 +9,12 @@ class PuppiesController < ApplicationController
   end
 
   def new
-    @puppy = Puppy.new
+    @puppie = Puppy.new
   end
 
   def create
-    @puppy = Puppy.new(params_puppy)
-    @puppy.save
+    @puppie = Puppy.new(params_puppy)
+    @puppie.save
     redirect_to puppies_index_path
   end
 
