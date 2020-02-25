@@ -1,5 +1,6 @@
-
+<% if puppie.photo.attached? %>
 <%= cl_image_tag puppie.photo.key,crop: :fill, class: "avatar" %>
+<% end %>
 <h2><%= puppie.name %></h2>
 <p><%= puppie.location %></p>
 <p><%= puppie.price %> € / jour</p>
