@@ -5,19 +5,47 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
+puts 'Destroying all puppies...'
 Puppie.destroy_all
+puts 'Seeding fresh new puppies!'
+name = Faker::Creature::Dog.name
+age = rand(1..10)
+breed = Faker::Creature::Dog.breed
+price = rand(20..50)
+location = "Lisboa"
 
+Puppie.create(name: name, age: age, breed: breed, price: price, user_id: 1, location: location)
 
-10.times {
+name = Faker::Creature::Dog.name
+age = rand(1..10)
+breed = Faker::Creature::Dog.breed
+price = rand(20..50)
+location = "Rua conde redondo"
 
-  name = Faker::Creature::Dog.name
-  age = rand(1..10)
-  breed = Faker::Creature::Dog.breed
-  price = rand(20..50)
-  location = Faker::Address.full_address
-  latitude = location.geocode[0]
-  longitude = location.geocode[1]
+Puppie.create(name: name, age: age, breed: breed, price: price, user_id: 1, location: location)
 
-  Puppie.create(name: name, age: age, breed: breed, price: price, user_id: 1, location: location, latitude: latitude, longitude:longitude)
-}
+name = Faker::Creature::Dog.name
+age = rand(1..10)
+breed = Faker::Creature::Dog.breed
+price = rand(20..50)
+location = "Bairro alto"
+
+Puppie.create(name: name, age: age, breed: breed, price: price, user_id: 1, location: location)
+
+name = Faker::Creature::Dog.name
+age = rand(1..10)
+breed = Faker::Creature::Dog.breed
+price = rand(20..50)
+location = "Chiado"
+
+Puppie.create(name: name, age: age, breed: breed, price: price, user_id: 1, location: location)
+
+name = Faker::Creature::Dog.name
+age = rand(1..10)
+breed = Faker::Creature::Dog.breed
+price = rand(20..50)
+location = "Rua Joaquina"
+
+Puppie.create(name: name, age: age, breed: breed, price: price, user_id: 1, location: location)
+
+puts 'All done!'
