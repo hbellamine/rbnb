@@ -20,7 +20,7 @@ name = Faker::Creature::Dog.name
 age = rand(1..10)
 breed = Faker::Creature::Dog.breed
 price = rand(20..50)
-location = "Rua conde redondo"
+location = "Rua conde redondo, Lisboa"
 
 Puppie.create(name: name, age: age, breed: breed, price: price, user_id: 1, location: location)
 
@@ -44,7 +44,7 @@ name = Faker::Creature::Dog.name
 age = rand(1..10)
 breed = Faker::Creature::Dog.breed
 price = rand(20..50)
-location = "Rua Joaquina"
+location = "Rua Joaquina, Lisboa"
 
 Puppie.create(name: name, age: age, breed: breed, price: price, user_id: 1, location: location)
 
