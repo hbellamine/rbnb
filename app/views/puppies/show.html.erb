@@ -1,29 +1,55 @@
-      <div id="img-show-puppie">
+      <%= render 'shared/navbar' %>
+
+  <div class="container-show">
+
+
+      <div class="card-trip">
+
+      <div id="showpuppy">
 
       <% if @puppie.photo.attached? %>
-            <div class="image">
-              <%= cl_image_tag @puppie.photo.key crop: :fill, class: "img-show" %>
+            <div class="image" width="100%" height="86%">
+              <%= cl_image_tag @puppie.photo.key, crop: :fill, class: "img-show" %>
             </div>
           <% else %>
-            <div class="image">
-              <%= cl_image_tag @puppie.photo.key crop: :fill, class: "img-show" %>
-            </div>
+            <div class="image"></div>
           <% end %>
-
       </div>
 
 
-      <div id="description">
-         <p>Age: <%=@puppie.age %> <br></p>
+
+    </div>
+    <div class="card-trip">
+
+      <div id="descriptionpuppy">
+        <h2 id="name">Name: <%=@puppie.name %> <br></h2>
+       <p>Age: <%=@puppie.age %> <br></p>
          <p>Breed: <%=@puppie.breed %> <br></p>
          <p>Price: <%=@puppie.price %> <br></p>
          <p>Availability: <%=@puppie.availability %> <br></p>
          <p>Location: <%=@puppie.location %> <br></p>
+
       </div>
+
+      </div>
+
+      <div class="card-trip">
+
+
+      </div>
+    </div>
+
+
+
+    <%= link_to 'Book this puppy', new_booking_path(@booking), class: "btn btn-danger" %>
+
+  </div>
+
+
+
 
 
 <!-- /puppies/4/book -->
-<%= link_to 'Book this puppy', new_booking_path(@booking) %>
 
 
 
