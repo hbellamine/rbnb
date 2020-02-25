@@ -6,8 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 puts 'Destroying all puppies...'
+
 Puppie.destroy_all
+
 puts 'Seeding fresh new puppies!'
+
 name = Faker::Creature::Dog.name
 age = rand(1..10)
 breed = Faker::Creature::Dog.breed
@@ -49,3 +52,14 @@ location = "Rua Joaquina, Lisboa"
 Puppie.create(name: name, age: age, breed: breed, price: price, user_id: 1, location: location)
 
 puts 'All done!'
+
+sleep(1)
+
+puts 'Clearing old users'
+
+User.destroy_all
+
+puts 'Adding core users'
+
+User.create(email: 'drex95@gmail.com', password: 'portugal')
+User.create(email: 'fanny@gmail.com', password: 'fanny')
