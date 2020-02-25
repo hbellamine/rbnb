@@ -1,0 +1,33 @@
+
+#showpuppy {
+  border-radius: 20px;
+  width: 100%;
+  object-fit: cover;
+  max-width: 500px;
+  height:auto;
+  box-shadow: 2px 2px 2px lightgray;
+  padding-bottom: 100 px;
+
+}
+
+#descriptionpuppy {
+  font-weight: bold;
+  padding: 20px;
+  color: rgba(93, 62, 99, 0.25);
+  font-family: Calligraffitti;
+}
+
+h2 {
+  font-size: 24px;
+  color: #e50207;
+  font-family: Calligraffitti;
+}
+
+.container-show {
+  display:flex;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 50px;
+  padding-bottom:20px;
+  background-color: white;
+  justify-content: space-between;
+}
