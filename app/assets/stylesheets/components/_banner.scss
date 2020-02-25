@@ -1,0 +1,44 @@
+.banner {
+      width: 100%;
+  height: auto;
+  background-size: cover;
+  background-position: center;
+  padding: 150px 0;
+  margin-bottom:20px;
+  margin-top:50px;
+}
+
+.banner h1 {
+      width: 100%;
+  height: auto;
+  margin: 0;
+  margin-right: 20px;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.banner p {
+        width: 100%;
+  height: auto;
+  font-size: 20px;
+  color: white;
+  opacity: .7;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+#addingredient a{
+        width: 100%;
+  height: auto;
+  color: white;
+  text-decoration: none;
+}
+
+
+.input-group {
+
+   margin: auto;
+  width: 50%;
+  padding: 10px;
+}
