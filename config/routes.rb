@@ -7,7 +7,8 @@ Rails.application.routes.draw do
 
   resources :users do
 
-    resources :puppies, only: [:new, :create]
+    resources :puppies, only: [:index, :new, :create]
+    resources :bookings, only: :index
 
   end
 
