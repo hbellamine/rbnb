@@ -2,7 +2,11 @@ class PuppiesController < ApplicationController
   skip_before_action :authenticate_user!, only:[:index,:show]
   before_action :find_puppie, only:[:show,:edit,:destroy,:update]
   def index
-
+    if params[:user_id] != nil
+      @puppies = Puppie.select { |p| p.user_id == params[:user_id] }
+      @puppies = policy_scope(Puppie).order(created_at: :desc)
+      render 'users/puppies'
+    else
       @puppies = Puppie.all
       @puppies = policy_scope(Puppie).order(created_at: :desc)
       @puppies = Puppie.geocoded #returns flats with coordinates
@@ -14,8 +18,8 @@ class PuppiesController < ApplicationController
            image_url: helpers.asset_url('https://i.pinimg.com/originals/6f/1e/8b/6f1e8b15a860d0083116f8bd9e2778d6.png')
         }
       end
-
-end
+    end
+  end
 
 
 
