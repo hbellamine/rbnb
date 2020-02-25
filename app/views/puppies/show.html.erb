@@ -5,7 +5,9 @@
               <%= cl_image_tag @puppie.photo.key crop: :fill, class: "img-show" %>
             </div>
           <% else %>
-            <div class="image"></div>
+            <div class="image">
+              <%= cl_image_tag @puppie.photo.key crop: :fill, class: "img-show" %>
+            </div>
           <% end %>
 
       </div>

@@ -1,6 +1,6 @@
 class PuppiesController < ApplicationController
   skip_before_action :authenticate_user!, only:[:index,:show]
-  before_action :find_puppie, only:[:show,:edit,:destroy,:update]
+  before_action :find_puppie, only:[:edit,:destroy,:update]
   def index
     if params[:user_id] != nil
       @puppies = Puppie.select { |p| p.user_id == params[:user_id] }
@@ -20,6 +20,10 @@ class PuppiesController < ApplicationController
       end
     end
   end
+
+
+
+
 
 
 
@@ -47,7 +51,7 @@ class PuppiesController < ApplicationController
   end
 
   def show
-
+  @puppie = Puppie.find(params[:id])
   end
 
   def edit
