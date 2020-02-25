@@ -1,38 +1,35 @@
 <%= render 'shared/navbar' %>
 
-<div class="grid-container">
+<div class="pageindex">
+    <div class="grid-container">
 
-  <% @puppies.each do |puppie| %>
-  <div class="card-trip">
-    <%=link_to puppy_path(puppie), class: "img-rounded" do %>
-      <% if puppie.photo.attached? %>
-        <%= cl_image_tag puppie.photo.key, height: 300, width: 400, crop: :fill, class: "img-rounded" %>
-      <% end %>
-      <h1 id="puppiename"><%= puppie.name %>
-        <%= link_to puppy_path(puppie.id), method: :delete do %>
-          <i class="fas fa-trash-alt bin"></i>
-        <%end%>
-      </h1>
-    <% end %>
-  </div>
-  <%end%>
-</div>
-
-<div
-  id="map"
-  style="width: 100%;
-  height: 600px;"
-  data-markers='<%= @puppies_loc.to_json %>'
-  data-mapbox-api-key="<%= ENV['pk.eyJ1Ijoicnp1YmVua28iLCJhIjoiY2s2a25penU1MDVuaDNzcnJkMjZrZ3NoYiJ9.FViL4WDPlVmmbPqN9Y2V4Q'] %>"
-></div>
-
-<%= form_tag(search_page_path, :method => "get",
-    class: 'navbar-form navbar-left') do %>
-  <div class="input-group">
-    <%= search_field_tag :search, params[:search], placeholder: "Search for a puppy", class: "form-control" %>
-    <div class="input-group-btn">
-      <%= button_tag "Search", :class => 'btn btn-primary glyphicon glyphicon-search',:name => nil%>
+      <% @puppies.each do |puppie| %>
+      <div class="card-trip">
+        <%=link_to puppy_path(puppie), class: "img-rounded" do %>
+          <% if puppie.photo.attached? %>
+            <%= cl_image_tag puppie.photo.key, height: 300, width: 400, crop: :fill, class: "img-rounded" %>
+          <% end %>
+          <h1 id="puppiename"><%= puppie.name %>
+            <%= link_to edit_puppy_path(puppie.id) do %>
+              <i class="fas fa-edit"></i>
+            <%end%>
+            <%= link_to puppy_path(puppie.id), method: :delete do %>
+              <i class="fas fa-trash-alt bin"></i>
+            <%end%>
+          </h1>
+        <% end %>
+      </div>
+      <%end%>
     </div>
-  </div>
-<% end %>
+
+    <div
+      id="map"
+      style="width: 50%;
+      height: 600px;
+      margin-top: 60px;"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+    ></div>
+
+</div>
 

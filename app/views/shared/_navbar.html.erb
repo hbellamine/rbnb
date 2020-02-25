@@ -1,17 +1,9 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <a class="navbar-brand" href="#">
-    <img src="https://cdn.pixabay.com/photo/2018/05/08/21/27/airbnb-3383993_960_720.png" />
+  <a class="navbar-brand" href="/">
+    <img src="https://res.cloudinary.com/dnwnxu6xb/image/upload/v1582609993/Puppy_free_icon_zl39wd.png" />
 </a>
 
-<%= form_tag(puppies_path, :method => "get",
-    class: 'navbar-form navbar-left') do %>
-  <div class="input-group">
-    <%= search_field_tag :search, params[:search], placeholder: "Search for the cutest puppy", class: "form-control" %>
-    <div class="input-group-btn">
-      <%= button_tag "Search", :style => "background-color: #FF5A5F", :class => 'btn btn-primary glyphicon glyphicon-search',:name => nil%>
-    </div>
-  </div>
-<% end %>
+
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -38,6 +30,7 @@
           <a class="dropdown-item" href="users/show">Profile</a>
           <!-- <a class="dropdown-item" href="users/puppies">My puppies</a> -->
           <p class="dropdown-item"><%= link_to 'My puppies', user_puppies_path(current_user.id) %></p>
+          <p class="dropdown-item"><%= link_to 'Create a puppy', new_user_puppy_path(current_user.id) %></p>
           <a class="dropdown-item" href="users/bookings">My bookings</a>
           <p class="dropdown-item"><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></p>
         </div>

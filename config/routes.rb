@@ -5,14 +5,18 @@ Rails.application.routes.draw do
 
   resources :bookings
 
+  resources :puppies, except:[:new, :create]
+
   resources :users do
 
     resources :puppies, only: [:new, :create]
 
   end
 
-  resources :puppies, except:[:new, :create]
+  post '/puppies' => 'puppies#create'
+
+
 
 end
 
-end
+

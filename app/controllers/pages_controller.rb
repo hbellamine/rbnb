@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   def home
-    @puppie = Puppy.new
+    @puppie = Puppie.new
   end
 
 
