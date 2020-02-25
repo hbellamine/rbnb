@@ -19,8 +19,3 @@ Rails.application.routes.draw do
 
 
 end
-<<<<<<< HEAD
-
-
-=======
->>>>>>> a1160f04e05056ee1d0d23d33114976ea0a5b5db
