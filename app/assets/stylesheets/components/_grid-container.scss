@@ -1,0 +1,77 @@
+
+.grid-container{
+
+  display:grid;
+  grid-template-columns: 1fr 1fr ;
+  margin-top: 50px;
+  padding-bottom:20px;
+  background-color: white;
+
+
+}
+
+@media screen and (max-width: 601px) {
+
+  .grid-container{
+
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 50px;
+  padding-bottom:20px;
+  background-color: white;
+}
+
+@media screen and (max-width: 601px) {
+
+  #puppiename{
+    text-align:center;
+     padding-bottom:2px;
+  }
+    #puppiename a{
+    font-size:16px;
+  }
+
+  }
+
+
+
+  }
+
+.img-show{
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+    border-bottom-left-radius:10px;
+    border-bottom-right-radius:10px;
+
+}
+
+
+
+
+.img-create {
+  border-radius: 20px;
+    width: 100%;
+  object-fit: cover;
+  width: 600px;
+  height:auto;
+  box-shadow: 2px 2px 2px lightgray;
+  padding-bottom: 100 px;
+}
+
+#description-dose{
+    width: 100%;
+  height: auto;
+  color:black;
+  font-size:30px;
+      text-decoration: none;
+    font-family: dosis;
+
+    margin-left:20px;
+}
+
+.h1{
+color : white;
+text-align: center;
+
+}
