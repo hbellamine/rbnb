@@ -1,25 +1,9 @@
 class PuppiesController < ApplicationController
   before_action :authenticate_user!
   def index
-
-
-    # @puppies_loc = Puppie.geocoded #returns puppiess with coordinates
-
-    # @markers = @puppies_loc.map do |puppy|
-    #   {
-    #     lat: puppie.latitude,
-    #     lng: puppie.longitude
-    #   }
-    # end
-    # if params[:search].present?
-    #   sql_search = "name ILIKE :search OR breed ILIKE :search"
-    #   @puppies = Puppie.where(sql_search, search: "%#{params[:search]}%")
-    # else
       @puppies = Puppie.all
-
-
+      @puppies = policy_scope(Puppie).order(created_at: :desc)
       @puppies = Puppie.geocoded #returns flats with coordinates
-
       @markers = @puppies.map do |puppie|
         {
           lat: puppie.latitude,
@@ -39,6 +23,7 @@ end
   end
 
   def create
+    authorize @puppie
     @puppie = Puppie.new(params_puppy)
     @puppie.user = current_user
 
