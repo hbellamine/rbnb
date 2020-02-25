@@ -15,24 +15,25 @@
               <%= cl_image_tag "oxmhEgrazrb9AQA8uxakNpyy", height: 300, width: 400, crop: :fill, class: "img-rounded" %>
             </div>
           <% end %>
-          <h1 id="puppiename"><%= puppie.name %></h1>
 
-          <% if policy(puppie).edit? %>
-                <h1>
-                 <% link_to edit_puppy_path(puppie.id) do %>
-                   <i class="fas fa-edit"></i>
+
+           <h1 id="puppiename"><%= puppie.name %>
+
+            <div>
+                <% if policy(puppie).edit? %>
+                  <%= link_to edit_puppy_path(puppie.id) do %>
+                    <i class="fas fa-edit" style="font-size:15px"></i>
                   <% end %>
-                  </h1>
+                <% end %>
 
-          <% end %>
-
-
-        <% if policy(puppie).destroy? %>
-          <h1>
-            <% link_to puppy_path(puppie.id), method: :delete  %>
-            <i class="fas fa-trash-alt bin"></i>
+                <% if policy(puppie).destroy? %>
+                  <%= link_to puppy_path(puppie.id), method: :delete do %>
+                    <i class="fas fa-trash-alt bin" style="font-size:15px"></i>
+                  <% end %>
+                <%end%>
+            </div>
           </h1>
-        <%end%>
+
 
         <% end %>
       </div>

@@ -10,7 +10,9 @@
 }
 
   #puppiename{
-    text-align:center;
+    display:flex;
+    justify-content:space-between;
+    text-align:left;
     padding-bottom:2px;
 
   }

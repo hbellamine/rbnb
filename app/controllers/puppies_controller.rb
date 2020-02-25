@@ -1,5 +1,6 @@
 class PuppiesController < ApplicationController
   skip_before_action :authenticate_user!, only:[:index,:show]
+  before_action :find_puppie, only:[:show,:edit,:destroy,:update]
   def index
 
       @puppies = Puppie.all
@@ -42,22 +43,22 @@ end
   end
 
   def show
-    @puppie = Puppie.find(params[:id])
+
   end
 
   def edit
-     @puppie = Puppie.find(params[:id])
+
 
   end
 
   def update
-    @puppie = Puppie.find(params[:id])
+
     @puppie.update(params_puppy)
     redirect_to puppies_path
   end
 
   def destroy
-    puppie = Puppie.find(params[:id])
+
     puppie.destroy
     redirect_to puppies_path
   end
@@ -66,5 +67,11 @@ end
   def params_puppy
     params.require(:puppie).permit(:name, :photo, :age, :price, :availability, :breed, :location)
   end
+
+  def find_puppie
+     @puppie = Puppie.find(params[:id])
+     authorize @puppie
+  end
+
 
 end
