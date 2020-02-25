@@ -19,19 +19,3 @@ Rails.application.routes.draw do
 
 
 end
-
-<<<<<<< HEAD
-end
-#=======
-#  resources :puppies do
- #   resources :bookings, only: [:new, :create]
- # end
- # root to: 'pages#home'
-#>>>>>>> master
- # get 'users/puppies'
- # get 'users/bookings'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-#end
-=======
-
->>>>>>> cc5b145dae7f98d84318e4cf4c1e23bc0a344e61
