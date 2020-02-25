@@ -1,6 +1,7 @@
 class PuppiesController < ApplicationController
-  before_action :authenticate_user!
+  skip_before_action :authenticate_user!, only:[:index,:show]
   def index
+
       @puppies = Puppie.all
       @puppies = policy_scope(Puppie).order(created_at: :desc)
       @puppies = Puppie.geocoded #returns flats with coordinates
@@ -20,11 +21,13 @@ end
 
   def new
     @puppie = Puppie.new
+    authorize @puppie
   end
 
   def create
-    authorize @puppie
+
     @puppie = Puppie.new(params_puppy)
+    authorize @puppie
     @puppie.user = current_user
 
     @puppie.latitude = @puppie.geocode[0]
