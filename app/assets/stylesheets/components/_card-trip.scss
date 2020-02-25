@@ -8,17 +8,20 @@
   margin-left:20px;
       border-bottom-left-radius:5px;
     border-bottom-right-radius:5px;
-    width: 300px;
-    height: 400px;
-
 
 .image {
-  width: 100%;
-  height: 86%;
-  background: url('https://s3.amazonaws.com/cdn-origin-etr.akc.org/wp-content/uploads/2017/11/12231413/Labrador-Retriever-MP.jpg');
-  background-size: cover;
-}
+background: url('https://res.cloudinary.com/dnwnxu6xb/image/upload/c_fit,h_300,w_400/v1582643025/oxmhEgrazrb9AQA8uxakNpyy.jpg');  
+background-size: cover;
+  }
+  
+.cardelements{
+  display:flex;
+  justify-content: space-between;
+  }  
 
+.iconselements{
+  display:flex;
+}
   img {
   height: 100%;
   width: 100%;
@@ -87,4 +90,8 @@
   right: 16px;
   top: -20px;
   width: 40px;
+}
+
+.image-container:hover {
+text-decoration:none;
 }

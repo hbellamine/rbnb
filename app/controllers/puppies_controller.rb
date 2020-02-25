@@ -1,25 +1,15 @@
 class PuppiesController < ApplicationController
-  before_action :authenticate_user!
+  skip_before_action :authenticate_user!, only:[:index,:show]
+  before_action :find_puppie, only:[:show,:edit,:destroy,:update]
   def index
-
-
-    # @puppies_loc = Puppie.geocoded #returns puppiess with coordinates
-
-    # @markers = @puppies_loc.map do |puppy|
-    #   {
-    #     lat: puppie.latitude,
-    #     lng: puppie.longitude
-    #   }
-    # end
-    # if params[:search].present?
-    #   sql_search = "name ILIKE :search OR breed ILIKE :search"
-    #   @puppies = Puppie.where(sql_search, search: "%#{params[:search]}%")
-    # else
+    if params[:user_id] != nil
+      @puppies = Puppie.select { |p| p.user_id == params[:user_id] }
+      @puppies = policy_scope(Puppie).order(created_at: :desc)
+      render 'users/puppies'
+    else
       @puppies = Puppie.all
-
-
+      @puppies = policy_scope(Puppie).order(created_at: :desc)
       @puppies = Puppie.geocoded #returns flats with coordinates
-
       @markers = @puppies.map do |puppie|
         {
           lat: puppie.latitude,
@@ -28,18 +18,21 @@ class PuppiesController < ApplicationController
            image_url: helpers.asset_url('https://i.pinimg.com/originals/6f/1e/8b/6f1e8b15a860d0083116f8bd9e2778d6.png')
         }
       end
-
-end
+    end
+  end
 
 
 
 
   def new
     @puppie = Puppie.new
+    authorize @puppie
   end
 
   def create
+
     @puppie = Puppie.new(params_puppy)
+    authorize @puppie
     @puppie.user = current_user
 
     @puppie.latitude = @puppie.geocode[0]
@@ -54,22 +47,22 @@ end
   end
 
   def show
-    @puppie = Puppie.find(params[:id])
+
   end
 
   def edit
-     @puppie = Puppie.find(params[:id])
+
 
   end
 
   def update
-    @puppie = Puppie.find(params[:id])
+
     @puppie.update(params_puppy)
     redirect_to puppies_path
   end
 
   def destroy
-    puppie = Puppie.find(params[:id])
+
     puppie.destroy
     redirect_to puppies_path
   end
@@ -78,5 +71,11 @@ end
   def params_puppy
     params.require(:puppie).permit(:name, :photo, :age, :price, :availability, :breed, :location)
   end
+
+  def find_puppie
+     @puppie = Puppie.find(params[:id])
+     authorize @puppie
+  end
+
 
 end

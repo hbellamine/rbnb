@@ -18,7 +18,7 @@
         </li>
       <% else %>
         <li class="nav-item active">
-          <a class="nav-link" href="#">Home</a>
+          <a class="nav-link" href="/#">Home</a>
         </li>
 <!--         <li class="nav-item active">
           <a class="nav-link" href="#">Dashboard</a>
@@ -30,7 +30,7 @@
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
           <p class="dropdown-item"><%= link_to 'My puppies', user_puppies_path(current_user.id) %></p>
           <p class="dropdown-item"><%= link_to 'My bookings', user_bookings_path(current_user.id) %></p>
-          <p class="dropdown-item"><%= link_to 'Create a puppy', new_user_puppy_path(current_user.id) %></p>
+          <% if policy(Puppie).create? %><p class="dropdown-item"> <%= link_to "Add a puppy",new_user_puppy_path(current_user.id)%></p><% end %>
           <p class="dropdown-item"><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></p>
         </div>
       </li>
