@@ -1,17 +1,27 @@
       <div id="img-show-puppie">
-        <%= cl_image_tag @puppie.photo.key, crop: :fill, class: "img-show" %>
+
+      <% if @puppie.photo.attached? %>
+            <div class="image">
+              <%= cl_image_tag @puppie.photo.key crop: :fill, class: "img-show" %>
+            </div>
+          <% else %>
+            <div class="image"></div>
+          <% end %>
+
       </div>
 
 
       <div id="description">
-        <%=@puppie.name %> <br>
-        <%=@puppie.age %> <br>
-        <%=@puppie.breed %> <br>
-        <%=@puppie.price %> <br>
-        <%=@puppie.availability %> <br>
-        <%=@puppie.location %> <br>
+         <p>Age: <%=@puppie.age %> <br></p>
+         <p>Breed: <%=@puppie.breed %> <br></p>
+         <p>Price: <%=@puppie.price %> <br></p>
+         <p>Availability: <%=@puppie.availability %> <br></p>
+         <p>Location: <%=@puppie.location %> <br></p>
       </div>
 
+
+<!-- /puppies/4/book -->
+<%= link_to 'Book this puppy', new_booking_path(@booking) %>
 
 
 

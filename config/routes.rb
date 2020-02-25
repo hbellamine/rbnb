@@ -16,6 +16,4 @@ Rails.application.routes.draw do
 
   post '/puppies' => 'puppies#create'
 
-
-
 end

@@ -13,6 +13,7 @@ gem 'redis'
 gem 'devise'
 gem 'geocoder'
 gem 'faker'
+gem 'pundit'
 
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass', '~> 5.6.1'
