@@ -3,53 +3,49 @@
   <div class="container-show">
 
 
-      <div class="card-trip">
+    <div class="card-trip-show">
 
       <div id="showpuppy">
 
-      <% if @puppie.photo.attached? %>
+        <% if @puppie.photo.attached? %>
             <div class="image" width="100%" height="86%">
               <%= cl_image_tag @puppie.photo.key, crop: :fill, class: "img-show" %>
             </div>
           <% else %>
-            <div class="image"></div>
-          <% end %>
+            <div class="image">
+            </div>
+        <% end %>
       </div>
 
+      <br><h2 id="name">Name: <%=@puppie.name %> <br></h2>
 
+      <br><h1 id="button-show"> <%= link_to 'Book this puppy', new_booking_path(@booking) %> </h1>
 
     </div>
-    <div class="card-trip">
+
+
+    <div class="card-trip-show">
 
       <div id="descriptionpuppy">
-        <h2 id="name">Name: <%=@puppie.name %> <br></h2>
-       <p>Age: <%=@puppie.age %> <br></p>
+         <p>Age: <%=@puppie.age %> <br></p>
          <p>Breed: <%=@puppie.breed %> <br></p>
          <p>Price: <%=@puppie.price %> <br></p>
          <p>Availability: <%=@puppie.availability %> <br></p>
          <p>Location: <%=@puppie.location %> <br></p>
-
-      </div>
-
-      </div>
-
-      <div class="card-trip">
-
-
       </div>
     </div>
 
+    <div class="card-trip-show"
+      id="map"
+      style="width: 50%;
+      height: 600px;
+      margin-top: 60px;"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+    ></div>
 
-
-    <%= link_to 'Book this puppy', new_booking_path(@booking), class: "btn btn-danger" %>
 
   </div>
-
-
-
-
-
-<!-- /puppies/4/book -->
 
 
 

@@ -47,6 +47,13 @@ class PuppiesController < ApplicationController
   def show
   @puppie = Puppie.find(params[:id])
   authorize @puppie
+  @markers =
+        {
+          lat: @puppie.latitude,
+          lng: @puppie.longitude,
+           infoWindow: render_to_string(partial: "shared/info_window", locals: { puppie: @puppie }),
+           image_url: helpers.asset_url('https://i.pinimg.com/originals/6f/1e/8b/6f1e8b15a860d0083116f8bd9e2778d6.png')
+        }
   end
 
   def edit
