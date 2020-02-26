@@ -1,6 +1,7 @@
 class PuppiesController < ApplicationController
   skip_before_action :authenticate_user!, only:[:index,:show]
   before_action :find_puppie, only:[:edit,:destroy,:update]
+
   def index
 
       @puppies = Puppie.all
@@ -14,6 +15,11 @@ class PuppiesController < ApplicationController
            image_url: helpers.asset_url('https://i.pinimg.com/originals/6f/1e/8b/6f1e8b15a860d0083116f8bd9e2778d6.png')
         }
       end
+    end
+
+    def mypuppies
+      @puppies = Puppie.where(user_id: current_user)
+      authorize @puppies
     end
 
   def new
@@ -40,6 +46,7 @@ class PuppiesController < ApplicationController
 
   def show
   @puppie = Puppie.find(params[:id])
+  authorize @puppie
   end
 
   def edit

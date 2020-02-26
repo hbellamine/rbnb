@@ -8,14 +8,6 @@ class UsersController < ApplicationController
   def show
   end
 
-  def puppies
-    @puppies = Puppie.where(user_id: current_user)
-
-    @puppies = policy_scope(puppies).order(created_at: :desc)
-  end
-
-
-
   def update
   end
 

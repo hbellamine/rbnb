@@ -1,44 +1,4 @@
-<%= render partial: 'shared/navbar' %>
 
-<h1>My puppies bookings</h1>
-
-
-  <% @puppies.each do |puppie| %>
-      <div class="card-product">
-        <%=link_to puppy_path(puppie), class: "image-container" do %>
-          <% if puppie.photo.attached? %>
-            <div class="image">
-              <%= cl_image_tag puppie.photo.key,height: 300, width: 400, crop: :fill, class: "img-rounded" %>
-            </div>
-          <% else %>
-            <div class="image">
-              <%= cl_image_tag "oxmhEgrazrb9AQA8uxakNpyy", height: 300, width: 400, crop: :fill, class: "img-rounded" %>
-            </div>
-          <% end %>
-        <% end %>
-
-           <div class="card-product-infos">
-              <h2><%= puppie.name %></h2>
-
-              <p><% if policy(puppie).edit? %>
-                    <%= link_to edit_puppy_path(puppie.id) do %>
-                    <i class="fas fa-edit" style="font-size:15px"></i>
-                    <% end %>
-                  <%end%>
-              </p>
-
-               <p><% if policy(puppie).destroy? %>
-                    <%= link_to puppy_path(puppie.id), method: :delete do %>
-                    <i class="fas fa-trash-alt bin" style="font-size:15px"></i>
-                    <% end %>
-                  <%end%>
-              </p>
-
-            </div>
-
-        </div>
-
-        <%end%>
 
 
 
