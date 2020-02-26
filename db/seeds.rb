@@ -13,7 +13,7 @@ User.create!(
 
 
 puts 'Destroying all puppies...'
-Puppie.destroy_all
+Puppy.destroy_all
 puts 'Seeding fresh new puppies!'
 name = Faker::Creature::Dog.name
 age = rand(1..10)
@@ -21,7 +21,7 @@ breed = Faker::Creature::Dog.breed
 price = rand(20..50)
 location = "Lisboa"
 
-Puppie.create(name: name, age: age, breed: breed, price: price, user_id: 1, location: location)
+Puppy.create(name: name, age: age, breed: breed, price: price, user_id: 1, location: location)
 
 name = Faker::Creature::Dog.name
 age = rand(1..10)
@@ -29,7 +29,7 @@ breed = Faker::Creature::Dog.breed
 price = rand(20..50)
 location = "Rua conde redondo, Lisboa"
 
-Puppie.create(name: name, age: age, breed: breed, price: price, user_id: 1, location: location)
+Puppy.create(name: name, age: age, breed: breed, price: price, user_id: 1, location: location)
 
 name = Faker::Creature::Dog.name
 age = rand(1..10)
@@ -37,7 +37,7 @@ breed = Faker::Creature::Dog.breed
 price = rand(20..50)
 location = "Bairro alto"
 
-Puppie.create(name: name, age: age, breed: breed, price: price, user_id: 1, location: location)
+Puppy.create(name: name, age: age, breed: breed, price: price, user_id: 1, location: location)
 
 name = Faker::Creature::Dog.name
 age = rand(1..10)
@@ -45,7 +45,7 @@ breed = Faker::Creature::Dog.breed
 price = rand(20..50)
 location = "Chiado"
 
-Puppie.create(name: name, age: age, breed: breed, price: price, user_id: 1, location: location)
+Puppy.create(name: name, age: age, breed: breed, price: price, user_id: 1, location: location)
 
 name = Faker::Creature::Dog.name
 age = rand(1..10)
@@ -53,6 +53,6 @@ breed = Faker::Creature::Dog.breed
 price = rand(20..50)
 location = "Rua Joaquina, Lisboa"
 
-Puppie.create(name: name, age: age, breed: breed, price: price, user_id: 1, location: location)
+Puppy.create(name: name, age: age, breed: breed, price: price, user_id: 1, location: location)
 
 puts 'All done!'

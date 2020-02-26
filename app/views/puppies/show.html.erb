@@ -3,47 +3,44 @@
   <div class="container-show">
 
 
-      <div class="card-trip">
+    <div class="card-trip">
 
       <div id="showpuppy">
 
-      <% if @puppie.photo.attached? %>
-            <div class="image" width="100%" height="86%">
-              <%= cl_image_tag @puppie.photo.key, crop: :fill, class: "img-show" %>
+        <% if @puppy.photo.attached? %>
+            <div class="image">
+              <%= cl_image_tag @puppy.photo.key,height: 300, width: 400, crop: :fill, class: "img-show" %>
             </div>
           <% else %>
-            <div class="image"></div>
+            <div class="image">
+              <%= cl_image_tag "oxmhEgrazrb9AQA8uxakNpyy",height: 300, width: 400, crop: :fill, class: "img-show" %>
+            </div>
           <% end %>
       </div>
 
-
-
     </div>
+
+
+
+
+
     <div class="card-trip">
-
       <div id="descriptionpuppy">
-        <h2 id="name">Name: <%=@puppie.name %> <br></h2>
-       <p>Age: <%=@puppie.age %> <br></p>
-         <p>Breed: <%=@puppie.breed %> <br></p>
-         <p>Price: <%=@puppie.price %> <br></p>
-         <p>Availability: <%=@puppie.availability %> <br></p>
-         <p>Location: <%=@puppie.location %> <br></p>
-
-      </div>
-
-      </div>
-
-      <div class="card-trip">
-
-
+         <h2 id="name">Name: <%=@puppy.name %> <br></h2>
+         <p>Age: <%=@puppy.age %> <br></p>
+         <p>Breed: <%=@puppy.breed %> <br></p>
+         <p>Price: <%=@puppy.price %> € per Day<br></p>
+         <p>Availability: <%=@puppy.availability %> <br></p>
+         <p>Location: <%=@puppy.location %> <br></p>
       </div>
     </div>
-
-
-
-    <%= link_to 'Book this puppy', new_booking_path(@booking), class: "btn btn-danger" %>
-
   </div>
+
+
+
+    <%= link_to 'Book this puppy', new_puppy_booking_path(@puppy), class: "btn btn-danger" %>
+
+
 
 
 
