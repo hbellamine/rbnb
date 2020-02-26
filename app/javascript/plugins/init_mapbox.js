@@ -10,8 +10,11 @@ const buildMap = () => {
   });
 };
 
+
+
 const addMarkersToMap = (map, markers) => {
-  markers.forEach((marker) => {
+  if (markers.constructor === Array) {
+     markers.forEach((marker) => {
       const popup = new mapboxgl.Popup().setHTML(marker.infoWindow); // add this
         const element = document.createElement('div');
         element.className = 'marker';
@@ -19,18 +22,37 @@ const addMarkersToMap = (map, markers) => {
         element.style.backgroundSize = 'contain';
         element.style.width = '25px';
         element.style.height = '25px';
-
-
-    new mapboxgl.Marker(element)
+    new mapboxgl.Marker()
       .setLngLat([ marker.lng, marker.lat ])
       .setPopup(popup)
       .addTo(map);
-  });
+
+      })
+  } else {
+    const popup = new mapboxgl.Popup().setHTML(markers.infoWindow); // add this
+        const element = document.createElement('div');
+        element.className = 'marker';
+        element.style.backgroundImage = `url('${markers.image_url}')`;
+        element.style.backgroundSize = 'contain';
+        element.style.width = '25px';
+        element.style.height = '25px';
+
+
+    new mapboxgl.Marker()
+      .setLngLat([ markers.lng, markers.lat ])
+      .setPopup(popup)
+      .addTo(map);
+  }
 };
+
 
 const fitMapToMarkers = (map, markers) => {
   const bounds = new mapboxgl.LngLatBounds();
+  if (markers.constructor === Array) {
   markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
+} else {
+  bounds.extend([ markers.lng, markers.lat ])
+}
   map.fitBounds(bounds, { padding: 70, maxZoom: 15 });
 };
 

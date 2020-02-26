@@ -3,6 +3,28 @@
   <div class="container-show">
 
 
+
+    <div class="card-trip-show">
+
+      <div id="showpuppy">
+
+        <% if @puppie.photo.attached? %>
+            <div class="image" width="100%" height="86%">
+              <%= cl_image_tag @puppie.photo.key, crop: :fill, class: "img-show" %>
+            </div>
+          <% else %>
+            <div class="image">
+            </div>
+        <% end %>
+      </div>
+
+      <br><h2 id="name">Name: <%=@puppie.name %> <br></h2>
+
+      <br><h1 id="button-show"> <%= link_to 'Book this puppy', new_booking_path(@booking) %> </h1>
+
+    </div>
+
+
     <div class="card-trip">
 
       <div id="showpuppy">
@@ -39,21 +61,16 @@
          <p>Price: <%=@puppy.price %> € per Day<br></p>
          <p>Availability: <%=@puppy.availability %> <br></p>
          <p>Location: <%=@puppy.location %> <br></p>
+
       </div>
     </div>
   </div>
 
-
+    
 
     <%= render 'shared/booking' %>
 
 
-
-
-
-
-
-<!-- /puppies/4/book -->
 
 
 
