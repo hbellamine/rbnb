@@ -3,41 +3,40 @@ class PuppiesController < ApplicationController
   before_action :find_puppie, only:[:edit,:destroy,:update]
 
   def index
-
-      @puppies = Puppie.all
-      @puppies = policy_scope(Puppie).order(created_at: :desc)
-      @puppies = Puppie.geocoded #returns flats with coordinates
-      @markers = @puppies.map do |puppie|
-        {
-          lat: puppie.latitude,
-          lng: puppie.longitude,
-           infoWindow: render_to_string(partial: "shared/info_window", locals: { puppie: puppie }),
-           image_url: helpers.asset_url('https://i.pinimg.com/originals/6f/1e/8b/6f1e8b15a860d0083116f8bd9e2778d6.png')
-        }
-      end
+    @puppies = Puppy.all
+    @puppies = policy_scope(Puppy).order(created_at: :desc)
+    @puppies = Puppy.geocoded #returns flats with coordinates
+    @markers = @puppies.map do |puppy|
+      {
+        lat: puppy.latitude,
+        lng: puppy.longitude,
+         infoWindow: render_to_string(partial: "shared/info_window", locals: { puppy: puppy }),
+         image_url: helpers.asset_url('https://library.kissclipart.com/20181214/qhe/kissclipart-cute-dog-clipart-puppy-siberian-husky-labrador-ret-ee2b2f765d4306db.png')
+      }
     end
+  end
 
     def mypuppies
-      @puppies = Puppie.where(user_id: current_user)
+      @puppies = Puppy.where(user_id: current_user)
       authorize @puppies
     end
 
   def new
-    @puppie = Puppie.new
-    authorize @puppie
+    @puppy = Puppy.new
+    authorize @puppy
   end
 
   def create
 
-    @puppie = Puppie.new(params_puppy)
-    authorize @puppie
-    @puppie.user = current_user
+    @puppy = Puppy.new(params_puppy)
+    authorize @puppy
+    @puppy.user = current_user
 
-    @puppie.latitude = @puppie.geocode[0]
-    @puppie.longitude = @puppie.geocode[1]
+    @puppy.latitude = @puppy.geocode[0]
+    @puppy.longitude = @puppy.geocode[1]
 
 
-    if @puppie.save
+    if @puppy.save
       redirect_to puppies_path
     else
       render :new
@@ -45,8 +44,8 @@ class PuppiesController < ApplicationController
   end
 
   def show
-  @puppie = Puppie.find(params[:id])
-  authorize @puppie
+  @puppy = Puppy.find(params[:id])
+  authorize @puppy
   end
 
   def edit
@@ -55,25 +54,24 @@ class PuppiesController < ApplicationController
   end
 
   def update
-
-    @puppie.update(params_puppy)
+    @puppy.update(params_puppy)
     redirect_to puppies_path
   end
 
   def destroy
 
-    puppie.destroy
+    puppy.destroy
     redirect_to puppies_path
   end
 
   private
   def params_puppy
-    params.require(:puppie).permit(:name, :photo, :age, :price, :availability, :breed, :location)
+    params.require(:puppy).permit(:name, :photo, :age, :price, :availability, :breed, :location)
   end
 
   def find_puppie
-     @puppie = Puppie.find(params[:id])
-     authorize @puppie
+     @puppy = Puppy.find(params[:id])
+     authorize @puppy
   end
 
 
