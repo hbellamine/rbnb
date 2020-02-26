@@ -1,4 +1,4 @@
-class PuppiePolicy < ApplicationPolicy
+class PuppyPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.all

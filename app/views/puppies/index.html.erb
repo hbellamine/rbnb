@@ -3,12 +3,12 @@
 <div class="pageindex">
     <div class="grid-container">
 
-      <% @puppies.each do |puppie| %>
+      <% @puppies.each do |puppy| %>
       <div class="card-trip">
-        <%=link_to puppy_path(puppie), class: "image-container" do %>
-          <% if puppie.photo.attached? %>
+        <%=link_to puppy_path(puppy), class: "image-container" do %>
+          <% if puppy.photo.attached? %>
             <div class="image">
-              <%= cl_image_tag puppie.photo.key,height: 300, width: 400, crop: :fill, class: "img-rounded" %>
+              <%= cl_image_tag puppy.photo.key,height: 300, width: 400, crop: :fill, class: "img-rounded" %>
             </div>
           <% else %>
             <div class="image">
@@ -17,17 +17,17 @@
           <% end %>
 
 
-           <h1 id="puppiename"><%= puppie.name %>
+           <h1 id="puppiename"><%= puppy.name %>
 
             <div>
-                <% if policy(puppie).edit? %>
-                  <%= link_to edit_puppy_path(puppie.id) do %>
+                <% if policy(puppy).edit? %>
+                  <%= link_to edit_puppy_path(puppy.id) do %>
                     <i class="fas fa-edit" style="font-size:15px"></i>
                   <% end %>
                 <% end %>
 
-                <% if policy(puppie).destroy? %>
-                  <%= link_to puppy_path(puppie.id), method: :delete do %>
+                <% if policy(puppy).destroy? %>
+                  <%= link_to puppy_path(puppy.id), method: :delete do %>
                     <i class="fas fa-trash-alt bin" style="font-size:15px"></i>
                   <% end %>
                 <%end%>
@@ -50,4 +50,6 @@
     ></div>
 
 </div>
+
+<%= render 'shared/footer' %>
 

@@ -4,19 +4,26 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
 
-  resources :bookings
 
-  resources :puppies, except:[:new, :create]
+  resources :bookings, only: [:index, :destroy] # list all user bookings
+
+
+  resources :puppies do
+    resources :bookings, only: [:new, :create] # create a booking for a particular puppy
+  end
+
+  # get "my_puppies", to ""
 
   resources :users do
 
     resources :puppies, only: [:index, :new, :create]
-    resources :bookings, only: :index
+
+    # post ':id/bookings', to:'bookings#create', as: 'userbookings'
 
   end
 
-  get ':id/puppies', to: 'puppies#mypuppies' , as: 'usermypuppies'
+  get 'my_puppies', to: 'puppies#mypuppies' , as: 'usermypuppies'
 
-  post '/puppies' => 'puppies#create'
+  # post '/puppies' => 'puppies#create'
 
 end
