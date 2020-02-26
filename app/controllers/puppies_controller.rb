@@ -44,14 +44,15 @@ class PuppiesController < ApplicationController
   end
 
   def show
+    @booking = Booking.new
 
-  @puppie = Puppie.find(params[:id])
-  authorize @puppie
+  @puppy = Puppy.find(params[:id])
+  authorize @puppy
   @markers =
         {
-          lat: @puppie.latitude,
-          lng: @puppie.longitude,
-           infoWindow: render_to_string(partial: "shared/info_window", locals: { puppie: @puppie }),
+          lat: @puppy.latitude,
+          lng: @puppy.longitude,
+           infoWindow: render_to_string(partial: "shared/info_window", locals: { puppy: @puppy }),
            image_url: helpers.asset_url('https://i.pinimg.com/originals/6f/1e/8b/6f1e8b15a860d0083116f8bd9e2778d6.png')
         }
 
