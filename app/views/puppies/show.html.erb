@@ -21,7 +21,14 @@
     </div>
 
 
-
+    <div
+  id="map"
+  style="width:400px;
+  height: 300px;
+  margin-top: 30px;"
+  data-markers="<%= @markers.to_json %>"
+  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+></div>
 
 
     <div class="card-trip">
@@ -38,7 +45,7 @@
 
 
 
-    <%= link_to 'Book this puppy', new_puppy_booking_path(@puppy), class: "btn btn-danger" %>
+    <%= render 'shared/booking' %>
 
 
 
