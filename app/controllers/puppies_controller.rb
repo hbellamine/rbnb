@@ -70,7 +70,7 @@ class PuppiesController < ApplicationController
 
   def destroy
 
-    puppy.destroy
+    @puppy.destroy
     redirect_to puppies_path
   end
 
