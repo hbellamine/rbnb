@@ -15,6 +15,8 @@ Rails.application.routes.draw do
 
   end
 
+  get ':id/puppies', to: 'puppies#mypuppies' , as: 'usermypuppies'
+
   post '/puppies' => 'puppies#create'
 
 end
