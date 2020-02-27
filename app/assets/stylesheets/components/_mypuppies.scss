@@ -8,6 +8,9 @@
   margin-bottom:15px;
 }
 
+
+
+
 .card-product img {
   height: 100%;
   width: 180px;
@@ -32,4 +35,47 @@
 .card-product .card-product-infos {
   padding: 16px;
 }
+
+.redlight-green {
+
+  font-size : 20px;
+}
+
+
+
+.card-product-booking {
+  overflow: hidden;
+  height: 330px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom:15px;
+}
+
+.card-product-booking h2 {
+  font-size: 12px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-product-booking img {
+  height: 100%;
+  width: 450px;
+  padding:0px;
+  border-top-right-radius: 9px;
+  border-bottom-right-radius: 9px;
+  object-fit: cover;
+}
+
+#titlebooking{
+  padding-top: 10px;
+  font-size: 20px;
+  background-color: gray;
+  color: white;
+}
+
+
+
 

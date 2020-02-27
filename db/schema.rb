@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 2020_02_26_145125) do
     t.date "enddate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "bookrequest"
     t.index ["puppy_id"], name: "index_bookings_on_puppy_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end

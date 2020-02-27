@@ -17,7 +17,20 @@ class PuppiesController < ApplicationController
   end
 
     def mypuppies
+      @booking =[]
       @puppies = Puppy.where(user_id: current_user)
+      @puppies.each do |puppy|
+
+        booking = Booking.where(puppy_id: puppy.id )
+
+        if booking.count > 1 then
+          booking.each do |booking|
+            @booking << booking
+          end
+        elsif booking.count == 1
+          @booking << booking[0]
+        end
+      end
       authorize @puppies
     end
 
@@ -44,8 +57,18 @@ class PuppiesController < ApplicationController
   end
 
   def show
+    @booking = Booking.new
+
   @puppy = Puppy.find(params[:id])
   authorize @puppy
+  @markers =
+        {
+          lat: @puppy.latitude,
+          lng: @puppy.longitude,
+           infoWindow: render_to_string(partial: "shared/info_window", locals: { puppy: @puppy }),
+           image_url: helpers.asset_url('https://i.pinimg.com/originals/6f/1e/8b/6f1e8b15a860d0083116f8bd9e2778d6.png')
+        }
+
   end
 
   def edit
@@ -60,7 +83,7 @@ class PuppiesController < ApplicationController
 
   def destroy
 
-    puppy.destroy
+    @puppy.destroy
     redirect_to puppies_path
   end
 

@@ -4,7 +4,10 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
 
-  resources :bookings, only: :index # list all user bookings
+
+
+  resources :bookings, only: [:index, :destroy, :edit] # list all user bookings
+
 
 
   resources :puppies do
