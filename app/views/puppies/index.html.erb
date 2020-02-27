@@ -33,7 +33,7 @@
                 </div>
 
 
-                <div class="profile__cta"><a class="button">Book <%= puppy.name %>!</a></div>
+                <div class="profile__cta"> <%=link_to "Book #{puppy.name}",puppy_path(puppy),class: "button" %></a></div>
             </div>
           </div>
       <%end%>
