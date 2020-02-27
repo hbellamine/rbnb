@@ -29,6 +29,15 @@ class BookingsController < ApplicationController
     @booking = Booking.new
   end
 
+  def edit
+    @booking = Booking.find(params[:id])
+    @booking.bookrequest = true
+    @booking.save
+    authorize @booking
+    redirect_to usermypuppies_path
+
+  end
+
   def update
   end
 
