@@ -2,41 +2,41 @@
 
 <div class="pageindex">
     <div class="grid-container">
-
       <% @puppies.each do |puppy| %>
-      <div class="card-trip">
-        <%=link_to puppy_path(puppy), class: "image-container" do %>
-          <% if puppy.photo.attached? %>
-            <div class="image">
-              <%= cl_image_tag puppy.photo.key,height: 300, width: 400, crop: :fill, class: "img-rounded" %>
-            </div>
-          <% else %>
-            <div class="image">
-              <%= image_tag puppy.picture, height: 300, width: 400, crop: :fill, class: "img-rounded" %>
-            </div>
-          <% end %>
 
+          <div class="zoom">
+            <div class="profile profile-smallimg">
 
-           <h1 id="puppiename"><%= puppy.name %>
-
-            <div>
-                <% if policy(puppy).edit? %>
-                  <%= link_to edit_puppy_path(puppy.id) do %>
-                    <i class="fas fa-edit" style="font-size:15px"></i>
-                  <% end %>
-                <% end %>
-
-                <% if policy(puppy).destroy? %>
-                  <%= link_to puppy_path(puppy.id), method: :delete do %>
-                    <i class="fas fa-trash-alt bin" style="font-size:15px"></i>
-                  <% end %>
+                <%=link_to puppy_path(puppy), class: "image-container" do %>
+                        <% if puppy.photo.attached? %>
+                            <div class="profile__image"> <%= cl_image_tag puppy.photo.key,height: 300, width: 400, crop: :fill %></div>
+                        <% else %>
+                            <div class="profile__image"><%= cl_image_tag "oxmhEgrazrb9AQA8uxakNpyy", height: 300, width: 400, crop: :fill %> </div>
+                        <% end %>
                 <%end%>
+
+
+
+                <div class="profile__info">
+                  <h3 id="Titlecard"><%= puppy.name %></h3>
+                  <p class="Descriptioncard"><%= puppy.age %> years old</p>
+                </div>
+
+
+                <div class="breed">
+                  <p class="typecard"><i class="fas fa-paw" style="font-size:28px; color:#693CB7;"></i>  Breed</p>
+                  <h5 class="breed"><%= puppy.breed %></h5>
+                </div>
+
+                <div class="dailyprice">
+                  <p class="typecard"><i class="fas fa-tags"style="font-size:28px; color:#693CB7;"></i> Daily price:</p>
+                  <h5 class="price"><%= puppy.price %> € per day</h5>
+                </div>
+
+
+                <div class="profile__cta"> <%=link_to "Book #{puppy.name}",puppy_path(puppy),class: "button" %></a></div>
             </div>
-          </h1>
-
-
-        <% end %>
-      </div>
+          </div>
       <%end%>
     </div>
 
