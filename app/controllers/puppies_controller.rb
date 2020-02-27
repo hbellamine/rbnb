@@ -58,8 +58,10 @@ class PuppiesController < ApplicationController
 
   def show
     @booking = Booking.new
-
-  @puppy = Puppy.find(params[:id])
+    @reviews = Review.all
+    @review = Review.new
+    @puppy = Puppy.find(params[:id])
+    @review.puppy_id = @puppy.id
   authorize @puppy
   @markers =
         {

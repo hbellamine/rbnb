@@ -47,16 +47,34 @@
   data-markers="<%= @markers.to_json %>"
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
 ></div>
+</div>
 
-
-
+<div class="container-show-reviews">
+  <div>
+    <% @reviews.each do |review| %>
+      <% if review.puppy_id == @puppy.id %>
+        <div class="card-product review-card">
+          <div class="card-product-infos">
+              <h2>Rating:</h2>
+              <% review.rating.times do %>
+                    <i class="fas fa-heart fa-sm"></i>
+              <% end %>
+              <p class='review-content' style='font-size: 15px'>"<%= review.content %>"</p>
+              <p class='review-user'>- <%= Faker::Name.first_name %></p>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
   </div>
-
-
-
-
-
-
-
-
-
+  <div>
+    <div class='review-form'>
+      <h1 class='create-review'>Add a new review for <%= @puppy.name %></h2>
+      <%= simple_form_for [@review] do |f| %>
+        <%= f.input :content %>
+        <%= f.input :rating, collection: [1, 2, 3, 4, 5] %>
+        <%= f.hidden_field :puppy_id, collection: [@review.puppy_id] %>
+        <%= f.submit %>
+      <% end %>
+    </div>
+  </div>
+</div>
