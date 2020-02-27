@@ -13,8 +13,9 @@ puts 'Destroying all puppies...'
 Puppy.destroy_all
 puts 'Seeding fresh new puppies!'
 
+User.create!(email: 'abc@gmail.com', password: 'password')
 
-url = "https://dog.ceo/api/husky/image/random"
+url = "https://dog.ceo/api/breed/hound/images"
 open_url = open(url).read
 json_url = JSON.parse(open_url)
 photos_library = json_url["message"]
@@ -29,5 +30,5 @@ location = Faker::Address.street_address
 photo = photos_library.sample
 p photo
 
-Puppy.create(name: name, age: age, breed: breed, price: price, user_id: 1, location: location, picture: photo)
+Puppy.create!(name: name, age: age, breed: breed, price: price, user_id: 1, location: location, picture: photo)
 end
