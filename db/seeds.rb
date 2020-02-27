@@ -14,7 +14,7 @@ Puppy.destroy_all
 puts 'Seeding fresh new puppies!'
 
 
-url = "https://dog.ceo/api/husky/image/random"
+url = "https://dog.ceo/api/breed/hound/images"
 open_url = open(url).read
 json_url = JSON.parse(open_url)
 photos_library = json_url["message"]

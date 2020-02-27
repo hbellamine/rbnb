@@ -3,8 +3,17 @@ class PuppiesController < ApplicationController
   before_action :find_puppie, only:[:edit,:destroy,:update]
 
   def index
-    @puppies = Puppy.all
+
     @puppies = policy_scope(Puppy).order(created_at: :desc)
+
+
+    if params[:search]
+
+  @puppies = Puppy.search_by_name_and_breed(params[:search])
+  else
+  @puppies = Puppy.all
+  end
+
     # @puppies = Puppy.geocoded #returns flats with coordinates
     @markers = @puppies.map do |puppy|
       {
