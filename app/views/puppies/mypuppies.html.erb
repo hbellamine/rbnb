@@ -1,10 +1,77 @@
 <%= render partial: 'shared/navbar' %>
 
+
+<h1> Pending confirmation </h1>
+
+ <% @booking.each do |booking| %>
+    <% puppy = booking.puppy %>
+      <div class="card-product">
+
+
+        <%=link_to puppy_path(puppy), class: "image-container" do %>
+          <% if puppy.photo.attached? %>
+            <div class="image">
+              <%= cl_image_tag puppy.photo.key,height: 300, width: 400, crop: :fill, class: "img-rounded" %>
+            </div>
+          <% else %>
+            <div class="image">
+              <%= cl_image_tag "oxmhEgrazrb9AQA8uxakNpyy", height: 300, width: 400, crop: :fill, class: "img-rounded" %>
+            </div>
+          <% end %>
+
+
+
+        <% end %>
+
+      <div class="card-product-infos">
+          <h3><%= puppy.name %></h3>
+          <h2>Booking || Start date <%= booking.startdate %> -- End date <%= booking.enddate %> <h2>
+          <h2> Number of days : <%= (booking.enddate - booking.startdate).to_i %></h2>
+       </div>
+       <div>
+            <p><% if policy(puppy).edit? %>
+              <%= link_to edit_puppy_path(puppy.id) do %>
+              <i class="fas fa-edit" style="font-size:15px"></i>
+                <% end %>
+               <%end%> </p>
+
+
+               <p><% if policy(puppy).destroy? %>
+                    <%= link_to puppy_path(puppy.id), method: :delete do %>
+                    <i class="fas fa-trash-alt bin" style="font-size:15px"></i>
+                    <% end %>
+                  <%end%>
+              </p>
+
+
+        </div>
+
+        <div>
+                                <% if booking.bookrequest == false %>
+          <%= link_to " Need Confirmation", edit_booking_path(booking) ,class: "btn btn-danger" %>
+
+        <% else %>
+
+          <%= link_to "Confirmed",usermypuppies_path,class: "btn btn-success" %>
+
+        <%end%>
+      </div>
+
+    </div>
+
+
+
+
+<%end%>
+
+
 <h1>My puppies bookings</h1>
 
 
   <% @puppies.each do |puppy| %>
       <div class="card-product">
+
+
         <%=link_to puppy_path(puppy), class: "image-container" do %>
           <% if puppy.photo.attached? %>
             <div class="image">

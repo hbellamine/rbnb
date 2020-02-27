@@ -17,7 +17,20 @@ class PuppiesController < ApplicationController
   end
 
     def mypuppies
+      @booking =[]
       @puppies = Puppy.where(user_id: current_user)
+      @puppies.each do |puppy|
+
+        booking = Booking.where(puppy_id: puppy.id )
+
+        if booking.count > 1 then
+          booking.each do |booking|
+            @booking << booking
+          end
+        elsif booking.count == 1
+          @booking << booking[0]
+        end
+      end
       authorize @puppies
     end
 
