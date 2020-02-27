@@ -60,6 +60,20 @@ class PuppiesController < ApplicationController
     @booking = Booking.new
 
   @puppy = Puppy.find(params[:id])
+  @bookingsconfirmed =[]
+
+  booking = Booking.where(puppy_id: @puppy.id )
+
+        if booking.count > 1 then
+          booking.each do |booking|
+            @bookingsconfirmed << booking
+              end
+        elsif booking.count == 1
+          @bookingsconfirmed << booking[0]
+        end
+
+
+
   authorize @puppy
   @markers =
         {
