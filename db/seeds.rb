@@ -6,53 +6,29 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create!(
-  email: "hamza.bellamine@gmail.com",
-  password: "123456789"
-)
+require 'open-uri'
 
 
 puts 'Destroying all puppies...'
 Puppy.destroy_all
 puts 'Seeding fresh new puppies!'
-name = Faker::Creature::Dog.name
-age = rand(1..10)
-breed = Faker::Creature::Dog.breed
-price = rand(20..50)
-location = "Lisboa"
 
-Puppy.create(name: name, age: age, breed: breed, price: price, user_id: 1, location: location)
+User.create!(email: 'abc@gmail.com', password: 'password')
 
-name = Faker::Creature::Dog.name
-age = rand(1..10)
-breed = Faker::Creature::Dog.breed
-price = rand(20..50)
-location = "Rua conde redondo, Lisboa"
+url = "https://dog.ceo/api/breed/hound/images"
+open_url = open(url).read
+json_url = JSON.parse(open_url)
+photos_library = json_url["message"]
 
-Puppy.create(name: name, age: age, breed: breed, price: price, user_id: 1, location: location)
+5.times do
 
 name = Faker::Creature::Dog.name
 age = rand(1..10)
 breed = Faker::Creature::Dog.breed
 price = rand(20..50)
-location = "Bairro alto"
+location = Faker::Address.street_address
+photo = photos_library.sample
+p photo
 
-Puppy.create(name: name, age: age, breed: breed, price: price, user_id: 1, location: location)
-
-name = Faker::Creature::Dog.name
-age = rand(1..10)
-breed = Faker::Creature::Dog.breed
-price = rand(20..50)
-location = "Chiado"
-
-Puppy.create(name: name, age: age, breed: breed, price: price, user_id: 1, location: location)
-
-name = Faker::Creature::Dog.name
-age = rand(1..10)
-breed = Faker::Creature::Dog.breed
-price = rand(20..50)
-location = "Rua Joaquina, Lisboa"
-
-Puppy.create(name: name, age: age, breed: breed, price: price, user_id: 1, location: location)
-
-puts 'All done!'
+Puppy.create!(name: name, age: age, breed: breed, price: price, user_id: 1, location: location, picture: photo)
+end

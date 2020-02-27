@@ -5,7 +5,7 @@ class PuppiesController < ApplicationController
   def index
     @puppies = Puppy.all
     @puppies = policy_scope(Puppy).order(created_at: :desc)
-    @puppies = Puppy.geocoded #returns flats with coordinates
+    # @puppies = Puppy.geocoded #returns flats with coordinates
     @markers = @puppies.map do |puppy|
       {
         lat: puppy.latitude,
