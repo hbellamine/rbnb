@@ -10,10 +10,11 @@ Rails.application.routes.draw do
 
   resources :bookings, only: [:index, :destroy, :edit] # list all user bookings
 
-  resources :reviews, only: [:new, :create]
+
 
   resources :puppies do
     resources :bookings, only: [:new, :create] # create a booking for a particular puppy
+    resources :reviews, only: [:new, :create]
   end
 
   # get "my_puppies", to ""
