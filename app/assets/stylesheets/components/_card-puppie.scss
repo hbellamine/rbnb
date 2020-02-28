@@ -13,6 +13,7 @@
         height: 100%;
         object-fit: cover;
 
+
       }
     }
 
@@ -21,7 +22,7 @@
         top: 0;
         box-shadow: none;
         background: rgb(247, 247, 247);
-        animation: bounce 1s;
+        animation: fadein 1s;
 
       }
       &:active, &:focus {
@@ -87,11 +88,13 @@ a.button {
   font-size: 20px;
   font-weight:bold;
   font-family: 'Poppins';
+
 }
 
 .Descriptioncard{
     font-size: 15px;
   font-family: 'Lato';
+
 }
 
 .typecard {
