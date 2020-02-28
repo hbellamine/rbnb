@@ -1,6 +1,7 @@
 .section {
   position: relative;
-  height: 100vh;
+  height: 80vh;
+  box-shadow: 2px 2px 2px lightgray;
 }
 
 .section .section-center {
@@ -203,4 +204,45 @@
   .booking-form>form {
     margin-left: 0px;
   }
+}
+
+.book-button {
+    outline: none;
+    width: 40%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border: none;
+    font: 500 16px/1 "Poppins", sans-serif;
+    padding: 20px;
+    cursor: pointer;
+    border-radius: 6px;
+    background: #03a9f4;
+    color: #2a313b;
+    position: relative;
+    top: 0;
+    transition: 0.2s ease;
+    margin-left: 128px;
+    margin-top: 20px;
+
+    &:hover {
+        top: 0;
+        box-shadow: none;
+        background: rgb(247, 247, 247);
+        animation: fadein 1s;
+    }
+}
+
+.booking-form .form-header .header-info {
+  margin: 40px;
+  font: 500 20px/1 "Poppins", sans-serif;
+  text-shadow: 1px 1px 1px black;
+}
+
+.booking-form .form-header .header-first {
+  margin-top: 220px;
+}
+
+#name {
+  text-shadow: 1px 1px 1px black;
 }

@@ -1,16 +1,11 @@
 <%= render partial: 'shared/navbar' %>
 
-
-
-
-<h1 style ="color:purple; margin-top: 20px; margin-bottom:20px;"> Pending confirmation </h1>
+<h1 style ="color:purple; margin-top: 20px; margin-bottom:20px;"> Pending booking requests </h1>
 
  <% @booking.each do |booking| %>
     <% puppy = booking.puppy %>
 
       <div class="animated fadeInLeftBig delay-2s card-product">
-
-
         <%=link_to puppy_path(puppy), class: "image-container" do %>
           <% if puppy.photo.attached? %>
             <div class="animated fadeInLeftBig image">
@@ -21,60 +16,31 @@
               <%= cl_image_tag "oxmhEgrazrb9AQA8uxakNpyy", height: 300, width: 400, crop: :fill, class: "img-rounded" %>
             </div>
           <% end %>
-
-
-
         <% end %>
-
       <div class="card-product-infos">
-          <h3><%= puppy.name %></h3>
-          <h2>Booking || Start date <%= booking.startdate %> -- End date <%= booking.enddate %> <h2>
-          <h2> Number of days : <%= (booking.enddate - booking.startdate).to_i %></h2>
-       </div>
-       <div>
-            <p><% if policy(puppy).edit? %>
-              <%= link_to edit_puppy_path(puppy.id) do %>
-              <i class="fas fa-edit" style="font-size:15px"></i>
-                <% end %>
-               <%end%> </p>
-
-
-               <p><% if policy(puppy).destroy? %>
-                    <%= link_to puppy_path(puppy.id), method: :delete do %>
-                    <i class="fas fa-trash-alt bin" style="font-size:15px"></i>
-                    <% end %>
-                  <%end%>
-              </p>
-
-
-        </div>
-
-        <div>
-                                <% if booking.bookrequest == false %>
-          <%= link_to " Need Confirmation", edit_booking_path(booking) ,class: "btn btn-danger" %>
-
-        <% else %>
-
-          <%= link_to "Confirmed",usermypuppies_path,class: "btn btn-success" %>
-
-        <%end%>
+        <h3><%= puppy.name %></h3>
+        <h2 style="font-size: 16px;">From: <%= booking.startdate %></h2>
+        <h2>Until: <%= booking.enddate %><h2>
+        <h2> Number of days : <%= (booking.enddate - booking.startdate).to_i + 1 %></h2>
       </div>
 
-    </div>
+        <div class="confirm-button">
+          <% if booking.bookrequest == false %>
+            <%= link_to "Confirm this booking", edit_booking_path(booking) ,class: "btn btn-danger" %>
+          <% else %>
+            <%= link_to "Booking confirmed", edit_booking_path(booking) ,class: "btn btn-success" %>
+<!--             <p class="btn btn-success">Booking confirmed</p> -->
+          <%end%>
+        </div>
+      </div>
+    <%end%>
 
 
+<h1 style ="color:purple; margin-top: 20px; margin-bottom:20px;" >My listed puppies</h1>
 
 
-<%end%>
-
-
-<h1 style ="color:purple; margin-top: 20px; margin-bottom:20px;" >My puppies listing</h1>
-
-
-  <% @puppies.each do |puppy| %>
+    <% @puppies.each do |puppy| %>
       <div class="card-product-mypuppies">
-
-
         <%=link_to puppy_path(puppy), class: "image-container" do %>
           <% if puppy.photo.attached? %>
             <div class="image">
@@ -88,26 +54,24 @@
         <% end %>
 
            <div class="card-product-infos">
-              <h2><%= puppy.name %></h2>
+            <h1 class="mypuppy-name"><%= puppy.name %></h1>
+            <p>
+              <% if policy(puppy).edit? %>
+                <%= link_to edit_puppy_path(puppy.id) do %>
+                  <h3 class="btn btn-default">Change puppy details</h3>
+                <% end %>
+              <%end%>
+            </p>
+             <p>
+              <% if policy(puppy).destroy? %>
+                <%= link_to puppy_path(puppy.id), method: :delete do %>
+                  <h3 class="btn btn-default">Delete <%= puppy.name %></h3>
+                <% end %>
+              <%end%>
+            </p>
+          </div>
 
-              <p><% if policy(puppy).edit? %>
-                    <%= link_to edit_puppy_path(puppy.id) do %>
-                    <i class="fas fa-edit" style="font-size:40px"></i>
-                    <% end %>
-                  <%end%>
-              </p>
-
-               <p><% if policy(puppy).destroy? %>
-                    <%= link_to puppy_path(puppy.id), method: :delete do %>
-                    <i class="fas fa-trash-alt bin" style="font-size:40px"></i>
-                    <% end %>
-                  <%end%>
-              </p>
-
-            </div>
-
-
-<div style="margin-left: 300px; text-align: center;">
+<div style="margin: auto; text-align: center;">
 
         <% bookingspuppy  =[] %>
 
@@ -124,11 +88,11 @@
                   <%= date.day %>
                 <% bookings.each do |booking| %>
                 </div>
-
                 <% end %>
               <% end %>
   </div>
         </div>
 
         <%end%>
-        <%= render 'shared/footer' %>
+
+<%= render 'shared/footer' %>
