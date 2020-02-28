@@ -1,10 +1,21 @@
 <%= render 'shared/navbar' %>
 
+     <%= form_tag(puppies_path, :method => "get") do %>
+    <div class="d-flex" style="margin-top:20px;box-shadow: 2px 2px 5px lightgray;">
+    <div style="width:100%"><%= search_field_tag :search, params[:search], placeholder: "Search for the cutest puppy", class: "form-control", style: "height:60px;" %></div>
+    <div><%= button_tag "Search", :style => "background-color: #FF5A5F", :class => 'btn btn-primary glyphicon glyphicon-search', style: "background-color:#05A9F4;font-weight:bold;width:200px;height:60px;",:name => nil%></div>
+
+    <%end%>
+  </div>
+
+
+
 <div class="pageindex">
     <div class="grid-container">
+
       <% @puppies.each do |puppy| %>
 
-          <div class="zoom">
+          <div class="animated zoomInUp delay-15s">
             <div class="profile profile-smallimg">
 
                 <%=link_to puppy_path(puppy), class: "image-container" do %>
@@ -44,7 +55,8 @@
       id="map"
       style="width: 50%;
       height: 600px;
-      margin-top: 60px;"
+      margin-top: 60px;
+      position: sticky;"
       data-markers="<%= @markers.to_json %>"
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
     ></div>

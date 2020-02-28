@@ -1,0 +1,66 @@
+
+
+
+
+  <div id="booking" class="section">
+    <div class="section-center">
+      <div class="container animated bounceInLeft delay-15s">
+        <div class="row">
+          <div class="booking-form">
+            <div class="booking-bg" style="background-image: url('<%=cl_image_path @puppy.photo.key,height: 300, width: 400, crop: :fill, class: "img-show" %>')">
+              <div class="form-header">
+                <h2 id="name">Name: <%=@puppy.name %> <br>
+                <p>Age: <%=@puppy.age %> <br></p>
+                <p>Breed: <%=@puppy.breed %> <br></p>
+                <p>Price: <%=@puppy.price %> € per Day<br></p>
+                <p>Location: <%=@puppy.location %> <br></p>
+              </div>
+            </div>
+
+            <%= simple_form_for [@puppy,@booking] do |f| %>
+            <form>
+              <div class="row">
+
+                <div class="col-md-6 text-center">
+
+
+
+                  <div class="form-group">
+
+                   <span class="form-label"> <%= f.input :startdate  %></span>
+                  </div>
+                </div>
+                <div class="col-md-6 text-center">
+                  <div class="form-group">
+
+                    <span class="form-label"><%=f.input :enddate %></span>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="row d-flex justify-content-center text-center">
+
+                  <%= month_calendar events: @bookingsconfirmed do |date,bookings| %>
+                  <%= date.day %>
+                <% bookings.each do |booking| %>
+                </div>
+
+                <% end %>
+              <% end %>
+              </div>
+
+              <% if @booking.enddate != nil %>
+              <h1>Price : <%= @puppy.price * (@booking.enddate - @booking.startdate).to_i %> € </h1>
+              <%end%>
+              <%=f.submit "Book #{@puppy.name} 🐶", class: "btn btn-primary" %>
+
+
+            </form>
+            <%end%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+

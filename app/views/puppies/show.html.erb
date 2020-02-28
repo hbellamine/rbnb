@@ -1,67 +1,32 @@
       <%= render 'shared/navbar' %>
 
-  <div class="container-show">
 
 
 
-    <div class="card-trip-show">
-
-      <div id="showpuppy">
-
-        <% if @puppy.photo.attached? %>
-            <div class="image" width="100%" height="86%">
-              <%= cl_image_tag @puppy.photo.key,height: 300, width: 400, crop: :fill, class: "img-show" %>
-            </div>
-          <% else %>
-            <div class="image">
-              <%= cl_image_tag "oxmhEgrazrb9AQA8uxakNpyy", height: 400, width: 400, crop: :fill, class: "img-rounded" %>
-            </div>
-        <% end %>
-      </div>
-
-      <br><h2 id="name">Name: <%=@puppy.name %> <br>
-      <%= render 'shared/booking' %></h2>
-
-    </div>
-
-    <div class="card-trip">
-      <div id="descriptionpuppy">
-         <h2 id="name">Name: <%=@puppy.name %> <br></h2>
-         <p>Age: <%=@puppy.age %> <br></p>
-         <p>Breed: <%=@puppy.breed %> <br></p>
-         <p>Price: <%=@puppy.price %> € per Day<br></p>
-         <p>Availability: <%=@puppy.availability %> <br></p>
-         <p>Location: <%=@puppy.location %> <br></p>
-
-
-
-
-
-
-
-
-      </div>
-    </div>
-
-    <div
+     <div
   id="map"
-  style="width:400px;
+  class ="animated bounceInRight delay-15s"
+  style="width:1100px;
   height: 300px;
   margin-top: 20px;
-  margin-right: 20px;"
+  margin-right: 20px;
+  border-radius: 10px "
 
   data-markers="<%= @markers.to_json %>"
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
 ></div>
-</div>
 
-<div class="container-show-reviews">
+
+<%= render  'shared/bookingnew' %>
+
+<div class="container-show-reviews" style="background-color: white;">
+
   <div>
     <% @reviews.each do |review| %>
       <% if review.puppy_id == @puppy.id %>
-        <div class="card-product review-card">
+        <div class="card-product review-card" style="box-shadow: 2px 2px 3px 2px lightgray; margin-right:20px;margin-left:20px; border-radius: 5px;">
           <div class="card-product-infos">
-              <h2>Rating:</h2>
+              <h2 style="color:purple; font-family:'Poppins';font-weight:bold;">Rating:</h2>
               <% review.rating.times do %>
                     <i class="fas fa-heart fa-sm"></i>
               <% end %>
@@ -73,14 +38,19 @@
     <% end %>
   </div>
   <div>
-    <div class='review-form'>
-      <h1 class='create-review'>Add a new review for <%= @puppy.name %></h2>
+
+  </div>
+  <div >
+    <div class='review-form' style="border-style: none; box-shadow: -4px -2px 3px 2px lightgray; border-radius: 10px; margin-right:10px;">
+      <h1 class='create-review' style="color:purple;">Add a new review for <%= @puppy.name %></h2>
       <%= simple_form_for [@review] do |f| %>
-        <%= f.input :content %>
+        <%= f.input :content, label: "Content", style: "color: purple" %>
         <%= f.input :rating, collection: [1, 2, 3, 4, 5] %>
         <%= f.hidden_field :puppy_id, collection: [@review.puppy_id] %>
-        <%= f.submit %>
+        <%= f.submit "Rate #{@puppy.name}🐶", class: "btn btn-primary"%>
       <% end %>
     </div>
   </div>
 </div>
+
+   <%= render 'shared/footer' %>
