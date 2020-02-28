@@ -22,7 +22,7 @@ const addMarkersToMap = (map, markers) => {
         element.style.backgroundSize = 'contain';
         element.style.width = '25px';
         element.style.height = '25px';
-    new mapboxgl.Marker()
+    new mapboxgl.Marker(element)
       .setLngLat([ marker.lng, marker.lat ])
       .setPopup(popup)
       .addTo(map);
@@ -38,7 +38,7 @@ const addMarkersToMap = (map, markers) => {
         element.style.height = '25px';
 
 
-    new mapboxgl.Marker()
+    new mapboxgl.Marker(element)
       .setLngLat([ markers.lng, markers.lat ])
       .setPopup(popup)
       .addTo(map);
