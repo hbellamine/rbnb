@@ -1,6 +1,6 @@
 <%= render partial: 'shared/navbar' %>
 
-<h1 style="color:purple; margin-top: 30px">My pending bookings</h1>
+<h1 style="color:purple; margin-top: 30px">Pending bookings</h1>
 
 
   <% @bookings.each do |booking| %>
@@ -19,23 +19,26 @@
           <% end %>
 
           <div class ="redlight-green">
-            <%= if booking.bookrequest == false then "🛑 Waiting for owner confirmation" else " 🐶 Booking Confirmed" end %>
+            <%= if booking.bookrequest == false then "🛑 Waiting for owner confirmation 🛑" else " 🐶 Booking Confirmed! 🐶" end %>
           </div>
 
 
                 <div class="card text-white bg-dark mb-3" style="max-width: 50rem; height: 345px;">
-                          <div class="card-header" style="color:rgb(50, 232, 242); font-family: 'Poppins'; font-weight: bold; font-size: 35px;"><%= puppy.name %></div>
+                          <div class="card-header" style="color:white; font-family: 'Poppins'; font-weight: bold; font-size: 35px;"><%= puppy.name %></div>
                         <div class="card-body">
-                            <h6 class="card-title"><strong style="color:gray;">Starting date</strong> : <%= booking.startdate %> - <strong style="color:gray;">Ending date :</strong> <%= booking.enddate %></h6>
-                            <p class="card-text"><strong style="color:gray;">Number of days :</strong> <%= (booking.enddate - booking.startdate).to_i %> days</p>
-                            <p class="card-text"><strong style="color:gray;">Price per day : </strong><%= puppy.price.to_i %> €/day</p>
-                            <p class="card-text"><strong style="color:gray;">Total : </strong><%= ((booking.enddate - booking.startdate).to_i) * puppy.price.to_i %> €</p>
+                            <h6 class="card-title"><strong style="color:gray;">Starting date: </strong><%= booking.startdate %></h6>
+                            <h6><strong style="color:gray;">Ending date: </strong><%= booking.enddate %></h6>
+                            <p class="card-text"><strong style="color:gray;">Number of days: </strong><%= (booking.enddate - booking.startdate).to_i + 1%> days</p>
+                            <p class="card-text"><strong style="color:gray;">Price per day: </strong><%= puppy.price.to_i %> €/day</p>
+                            <p class="card-text"><strong style="color:gray;">Total: </strong><%= ((booking.enddate - booking.startdate).to_i) * puppy.price.to_i %> €</p>
 
 
                             <p><% if policy(booking).destroy? %>
-                                          <%= link_to booking_path(booking), method: :delete do %>
-                                          <i class="fas fa-trash-alt bin" style="font-size:15px"></i>
-                                          <% end %>
+                            <%= link_to "Cancel booking request", booking_path(booking), method: :delete, class: "btn btn-danger" %>
+
+                      <!--                     <%= link_to booking_path(booking), method: :delete do %>
+                                            <h3>Cancel booking request</h3>
+                                          <% end %> -->
                                         <%end%>
                                     </p>
                       </div>
