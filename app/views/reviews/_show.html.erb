@@ -2,7 +2,11 @@
   <div class="card-product-infos">
       <h2 style="color:purple; font-family:'Poppins';font-weight:bold;">Rating:</h2>
       <% review.rating.times do %>
-            <i class="fas fa-heart fa-sm"></i>
+        <i class="fas fa-heart fa-sm"></i>
+      <% end %>
+      <% unheart = 5 - review.rating %>
+      <% unheart.times do %>
+        <i class="far fa-heart"></i>
       <% end %>
       <p class='review-content' style='font-size: 15px'>"<%= review.content %>"</p>
       <p class='review-user'>- <%= Faker::Name.first_name %></p>
