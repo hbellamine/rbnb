@@ -99,7 +99,7 @@ class PuppiesController < ApplicationController
           lat: @puppy.latitude,
           lng: @puppy.longitude,
            infoWindow: render_to_string(partial: "shared/info_window", locals: { puppy: @puppy }),
-           image_url: helpers.asset_url('https://i.pinimg.com/originals/6f/1e/8b/6f1e8b15a860d0083116f8bd9e2778d6.png')
+           image_url: helpers.asset_url('https://res.cloudinary.com/dnwnxu6xb/image/upload/v1582892294/doggy_xob98s.png')
         }
 
   end
