@@ -5,7 +5,7 @@ header {
   border-radius: 10px;
   position: relative;
   background-color: black;
-  height: 75vh;
+  height: 60vh;
   min-height: 25rem;
   width: 100%;
   overflow: hidden;
@@ -49,4 +49,8 @@ header .overlay {
   header video {
     display: none;
   }
+}
+
+.lead {
+  font-size: 24px;
 }
