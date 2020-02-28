@@ -1,10 +1,13 @@
 <%= render partial: 'shared/navbar' %>
 
 
-<h1> Pending confirmation </h1>
+
+
+<h1 style ="color:purple; margin-top: 20px; margin-bottom:20px;"> Pending confirmation </h1>
 
  <% @booking.each do |booking| %>
     <% puppy = booking.puppy %>
+
       <div class="animated fadeInLeftBig delay-2s card-product">
 
 
@@ -65,11 +68,11 @@
 <%end%>
 
 
-<h1>My puppies bookings</h1>
+<h1 style ="color:purple; margin-top: 20px; margin-bottom:20px;" >My puppies listing</h1>
 
 
   <% @puppies.each do |puppy| %>
-      <div class="card-product">
+      <div class="card-product-mypuppies">
 
 
         <%=link_to puppy_path(puppy), class: "image-container" do %>
@@ -89,20 +92,43 @@
 
               <p><% if policy(puppy).edit? %>
                     <%= link_to edit_puppy_path(puppy.id) do %>
-                    <i class="fas fa-edit" style="font-size:15px"></i>
+                    <i class="fas fa-edit" style="font-size:40px"></i>
                     <% end %>
                   <%end%>
               </p>
 
                <p><% if policy(puppy).destroy? %>
                     <%= link_to puppy_path(puppy.id), method: :delete do %>
-                    <i class="fas fa-trash-alt bin" style="font-size:15px"></i>
+                    <i class="fas fa-trash-alt bin" style="font-size:40px"></i>
                     <% end %>
                   <%end%>
               </p>
 
             </div>
 
+
+<div style="margin-left: 300px; text-align: center;">
+
+        <% bookingspuppy  =[] %>
+
+        <% bookingsp = @allbookings.where(puppy_id: puppy.id) %>
+        <% if bookingsp.count > 1 then %>
+          <% bookingsp.each do |booking| %>
+            <% bookingspuppy << booking %>
+          <% end %>
+        <% elsif bookingsp.count == 1 %>
+          <%bookingspuppy << bookingsp[0]%>
+        <%end%>
+
+                 <%= month_calendar events: bookingspuppy do |date,bookings| %>
+                  <%= date.day %>
+                <% bookings.each do |booking| %>
+                </div>
+
+                <% end %>
+              <% end %>
+  </div>
         </div>
 
         <%end%>
+        <%= render 'shared/footer' %>

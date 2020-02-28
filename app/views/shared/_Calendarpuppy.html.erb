@@ -1,0 +1,18 @@
+        <% bookingspuppy  =[] %>
+
+        <% bookingsp = @allbookings.where(puppy_id: puppy.id) %>
+        <% if bookingsp.count > 1 then %>
+          <% bookingsp.each do |booking| %>
+            <% bookingspuppy << booking %>
+          <% end %>
+        <% elsif bookingsp.count == 1 %>
+          <%bookingspuppy << bookingsp[0]%>
+        <%end%>
+
+                 <%= month_calendar events: bookingspuppy do |date,bookings| %>
+                  <%= date.day %>
+                <% bookings.each do |booking| %>
+                </div>
+
+                <% end %>
+              <% end %>

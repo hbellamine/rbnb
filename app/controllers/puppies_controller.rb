@@ -30,9 +30,13 @@ class PuppiesController < ApplicationController
         elsif booking.count == 1
           @booking << booking[0]
         end
+
+        @allbookings = Booking.all
       end
       authorize @puppies
     end
+
+
 
   def new
     @puppy = Puppy.new

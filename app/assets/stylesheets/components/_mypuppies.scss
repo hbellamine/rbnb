@@ -82,3 +82,46 @@
 
 
 
+.card-product-mypuppies {
+  border-radius:8px;
+  overflow: hidden;
+  height: 300px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  margin-bottom:15px;
+}
+
+
+
+
+.card-product-mypuppies img {
+  height: 300px;
+  width: 400px;
+  padding:0px;
+  object-fit: cover;
+}
+
+.card-product-mypuppies h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+  color: purple;
+}
+
+.card-product-mypuppies p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+  color: purple;
+}
+
+.card-product-mypuppies .card-product-infos {
+  padding: 16px;
+}
+
+
+
