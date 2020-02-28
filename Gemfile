@@ -2,7 +2,8 @@ source 'https://rubygems.org'
 ruby '2.6.5'
 
 gem 'bootsnap', require: false
-
+gem 'bootstrap-datepicker-rails'
+gem "simple_calendar", "~> 2.0"
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'cloudinary', '~> 1.12.0'
 gem 'jbuilder', '~> 2.0'
@@ -16,6 +17,7 @@ gem 'faker'
 gem 'pundit'
 gem 'omniauth-facebook'
 gem 'pg_search'
+gem 'animate-css-rails'
 
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass', '~> 5.6.1'

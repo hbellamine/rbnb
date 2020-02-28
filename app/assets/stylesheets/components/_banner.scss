@@ -1,44 +1,52 @@
-.banner {
-      width: 100%;
-  height: auto;
-  background-size: cover;
-  background-position: center;
-  padding: 150px 0;
-  margin-bottom:20px;
-  margin-top:50px;
+
+
+header {
+  margin-top: 20px;
+  border-radius: 10px;
+  position: relative;
+  background-color: black;
+  height: 75vh;
+  min-height: 25rem;
+  width: 100%;
+  overflow: hidden;
 }
 
-.banner h1 {
-      width: 100%;
+header video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
   height: auto;
-  margin: 0;
-  margin-right: 20px;
-  color: white;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  font-size: 32px;
-  font-weight: bold;
+  z-index: 0;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
 }
 
-.banner p {
-        width: 100%;
-  height: auto;
-  font-size: 20px;
-  color: white;
-  opacity: .7;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+header .container {
+  position: relative;
+  z-index: 2;
 }
 
-#addingredient a{
-        width: 100%;
-  height: auto;
-  color: white;
-  text-decoration: none;
+header .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  opacity: 0.5;
+  z-index: 1;
 }
 
-
-.input-group {
-
-   margin: auto;
-  width: 50%;
-  padding: 10px;
+@media (pointer: coarse) and (hover: none) {
+  header {
+    background: url('https://source.unsplash.com/XT5OInaElMw/1600x900') black no-repeat center center scroll;
+  }
+  header video {
+    display: none;
+  }
 }

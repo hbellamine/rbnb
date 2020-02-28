@@ -1,19 +1,15 @@
-class UserPolicy < ApplicationPolicy
+class ReviewPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.all
     end
   end
 
-  def show?
-  true
+  def new?
+    true
   end
 
-  def destroy?
-      true
+  def create?
+    true
   end
-
-
-
-
 end

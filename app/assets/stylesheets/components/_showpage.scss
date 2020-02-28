@@ -75,3 +75,49 @@ h2 {
     border-bottom-right-radius:5px;
 
   }
+
+.review-card {
+  box-shadow: none;
+  margin-top: 20px;
+}
+
+.fa-heart {
+  font-size: 24px;
+  margin-top: 10px;
+}
+
+.review-content {
+  display: inline;
+  margin-left: 50px;
+  font-size: 200%;
+}
+
+.review-user {
+  margin-left: 480px;
+}
+
+.review-form {
+  background-color: white;
+  padding: 50px;
+  margin-top: 20px;
+  border: 1px solid #4E5057;
+}
+
+.create-review {
+  text-align: center;
+  font-size: 30px;
+  color: #e50207;
+}
+
+.simple_form {
+  margin-bottom: 10px;
+}
+.container-reviews {
+  background-color: white;
+}
+.container-show-reviews {
+
+  display:flex;
+  background-color: #F4F4F4;
+  justify-content: space-between;
+}

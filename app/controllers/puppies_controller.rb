@@ -39,9 +39,13 @@ class PuppiesController < ApplicationController
         elsif booking.count == 1
           @booking << booking[0]
         end
+
+        @allbookings = Booking.all
       end
       authorize @puppies
     end
+
+
 
   def new
     @puppy = Puppy.new
@@ -68,7 +72,27 @@ class PuppiesController < ApplicationController
   def show
     @booking = Booking.new
 
-  @puppy = Puppy.find(params[:id])
+    @reviews = Review.all
+    @review = Review.new
+    @puppy = Puppy.find(params[:id])
+    @review.puppy_id = @puppy.id
+
+
+  @bookingsconfirmed =[]
+
+  booking = Booking.where(puppy_id: @puppy.id )
+
+        if booking.count > 1 then
+          booking.each do |booking|
+            @bookingsconfirmed << booking
+              end
+        elsif booking.count == 1
+          @bookingsconfirmed << booking[0]
+        end
+
+
+
+
   authorize @puppy
   @markers =
         {

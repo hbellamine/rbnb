@@ -14,15 +14,31 @@
         </button>
       </div>
       <div class="modal-body">
-
         <%= f.input :startdate %>
-        <%=f.input :enddate %>
+        <%=f.input :enddate%>
       </div>
+
+
+      <%= month_calendar events: @bookingsconfirmed do |date,bookings| %>
+
+      <%= date.day %>
+
+
+       <% bookings.each do |booking| %>
+       <p style="background-color:red; font-size: 10px;"> <%= "Booked" %> </p>
+     </div>
+        <% end %>
+      <% end %>
+
+
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <%=f.submit%>
       </div>
     </div>
   </div>
+
   <%end%>
+
+
 </div>
