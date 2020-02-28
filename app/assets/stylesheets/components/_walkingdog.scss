@@ -15,13 +15,14 @@
 }
 
 [class="🐕"] {
+  margin-top: 70px;
   z-index: 1;
   height: 300px;
   width: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
-
+  margin-bottom: -50px;
   * {
     position: absolute;
     will-change: transform;
