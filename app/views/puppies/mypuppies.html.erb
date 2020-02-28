@@ -5,12 +5,12 @@
 
  <% @booking.each do |booking| %>
     <% puppy = booking.puppy %>
-      <div class="card-product">
+      <div class="animated fadeInLeftBig delay-2s card-product">
 
 
         <%=link_to puppy_path(puppy), class: "image-container" do %>
           <% if puppy.photo.attached? %>
-            <div class="image">
+            <div class="animated fadeInLeftBig image">
               <%= cl_image_tag puppy.photo.key,height: 300, width: 400, crop: :fill, class: "img-rounded" %>
             </div>
           <% else %>

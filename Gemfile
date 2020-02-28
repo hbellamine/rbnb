@@ -16,7 +16,7 @@ gem 'geocoder'
 gem 'faker'
 gem 'pundit'
 gem 'omniauth-facebook'
-
+gem 'animate-css-rails'
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass', '~> 5.6.1'
 gem 'sassc-rails'

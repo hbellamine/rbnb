@@ -1,22 +1,14 @@
 <%= render partial: 'shared/navbar' %>
 
-<div class="globalcontainerhome">
-  <%= render partial: 'shared/banner' %>
 
 
-  <div class="h1">Heal yourself, book a <strong>puppy</strong> <br>
-  <%= form_tag(puppies_path, :method => "get",
-    class: 'navbar-form navbar-left') do %>
-  <div class="input-group">
-    <%= search_field_tag :search, params[:search], placeholder: "Search for the cutest puppy", class: "form-control" %>
 
-      <%= button_tag "Search", :style => "background-color: #FF5A5F", :class => 'btn btn-primary glyphicon glyphicon-search',:name => nil%>
+<%= render partial: 'shared/banner' %>
 
-  </div>
-<% end %>
-  </div>
 
-  </div>
+
+
+
 
 <div class ="containerhome">
 
